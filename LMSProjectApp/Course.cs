@@ -40,7 +40,8 @@ namespace LearningManagementSystem
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public string DisplayCourseName => $"{courseName} - {courseCode}";
+        public string DisplayCourseName => $"{Prefix} {courseName} {courseCode} {courseDescription}";
+
         public List<Student>? studentList;
         private List<Modules>? moduleList;
         private List<Assignment>? assignmentList;

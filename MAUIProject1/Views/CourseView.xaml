@@ -9,11 +9,18 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Label 
-            Text="Enrolled Courses"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button
+            <Label Text="Enrolled Courses:" 
+                IsVisible="{Binding SelectedStudent, Converter={StaticResource NullToBoolConverter}}"/>
+
+            <CollectionView ItemsSource="{Binding EnrolledCourses}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding DisplayCourseName}" LineBreakMode="WordWrap" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button
             Text="Cancel"
             Clicked="CancelClicked"/>
         </VerticalStackLayout>

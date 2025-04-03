@@ -25,7 +25,18 @@ namespace MAUIProject1.ViewModels
             }
         }
 
-        public Student SelectedStudent {  get; set; }
+        private Student _selectedStudent;
+        public Student SelectedStudent
+        {
+            get => _selectedStudent;
+            set
+            {
+                _selectedStudent = value;
+                NotifyPropertyChanged(nameof(SelectedStudent));
+                NotifyPropertyChanged(nameof(EnrolledCourses));
+            }
+        }
+
 
         public void DisplayDetails(Shell s)
         {
@@ -38,6 +49,22 @@ namespace MAUIProject1.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public ObservableCollection<Course> EnrolledCourses
+        {
+            get
+            {
+                if (SelectedStudent != null)
+                {
+                    return new ObservableCollection<Course>(SelectedStudent.GetEnrolledCourses());
+                }
+                else
+                {
+                    return new ObservableCollection<Course>();
+                }
+            }
+        }
+
         public void ResetView()
         {
             Query = string.Empty;

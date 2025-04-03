@@ -155,25 +155,6 @@ namespace MAUIProject1.ViewModels
             }
         });
 
-        /*
-        public void AddStudentToCourse(Student student)
-        {
-            if (!SelectedStudents.Contains(student))
-            {
-                SelectedStudents.Add(student);
-                CourseServices.Current.AddStudentToCourse(course, student);
-            }
-        }
-
-        public void RemoveStudentFromCourse(Student student)
-        {
-            if (SelectedStudents.Contains(student))
-            {
-                SelectedStudents.Remove(student);
-                CourseServices.Current.RemoveStudentFromCourse(course, student);
-            }
-        }*/
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {

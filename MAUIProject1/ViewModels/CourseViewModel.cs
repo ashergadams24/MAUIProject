@@ -10,9 +10,13 @@ namespace MAUIProject1.ViewModels
 {
     class CourseViewModel
     {
-        public CourseViewModel()
+        public Student SelectedStudent { get; set; }
+        public ObservableCollection<Course> EnrolledCourses { get; set; }
+
+        public CourseViewModel(Student student)
         {
-            
+            SelectedStudent = student;
+            EnrolledCourses = new ObservableCollection<Course>(student.GetEnrolledCourses());
         }
 
     }

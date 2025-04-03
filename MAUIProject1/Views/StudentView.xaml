@@ -15,7 +15,7 @@
                 HorizontalOptions="Center" />
             <ListView
                 ItemsSource="{Binding Students}"
-                SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
+                SelectedItem="{Binding SelectedStudent, Mode=TwoWay}">
             </ListView>
                 
             <Button
