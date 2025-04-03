@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MAUIProject1.Views"
              x:Class="MAUIProject1.Views.CourseOptionsView"
              NavigatedFrom="OnLeaving"
              NavigatedTo="OnArriving"
              Title="Course Options">
-             
 
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="25">
@@ -65,14 +65,41 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label Text="Not Enrolled" Grid.Column="0"></Label>
-                <Label Text="Buttons" Grid.Column="1"></Label>
                 <Label Text="Enrolled" Grid.Column="2"></Label>
             </Grid>
 
-            <ListView
-                ItemsSource="{Binding AvailableStudents}"
-                SelectedItem="{Binding SelectedStudent, Mode=TwoWay}">
-            </ListView>
+            <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="Auto">
+                <!-- Not Enrolled Students -->
+                <CollectionView ItemsSource="{Binding NotEnrolledStudents}"
+                    Grid.Column="0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Label Text="{Binding GetName}" VerticalOptions="Center"/>
+                                <Button Text="+" 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:CourseOptionsView}}, Path=BindingContext.EnrollStudentCommand}" 
+                            CommandParameter="{Binding}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Enrolled Students -->
+                <CollectionView ItemsSource="{Binding EnrolledStudents}" 
+                    Grid.Column="2">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Label Text="{Binding GetName}" VerticalOptions="Center"/>
+                                <Button Text="-" 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:CourseOptionsView}}, Path=BindingContext.UnenrollStudentCommand}" 
+                            CommandParameter="{Binding}" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
 
             <Button Text="Add Course" Clicked="OnAddCourseClicked" />
             <Button Text="Cancel"

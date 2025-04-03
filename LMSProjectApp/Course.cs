@@ -58,7 +58,7 @@ namespace LearningManagementSystem
 
         public Course()
         {
-            studentList = null;
+            studentList = new List<Student>();
             moduleList = null;
             assignmentList = null;
             Prefix = string.Empty;
