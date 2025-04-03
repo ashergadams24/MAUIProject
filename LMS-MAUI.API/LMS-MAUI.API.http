@@ -1,0 +1,6 @@
+@LMS_MAUI.API_HostAddress = http://localhost:5195
+
+GET {{LMS_MAUI.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

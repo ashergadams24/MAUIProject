@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIProject1.Views.StudentView"
+             Title="Student View">
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label 
+                Text="Student View"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <ListView
+                ItemsSource="{Binding Students}"
+                SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
+            </ListView>
+                
+            <Button
+                Text="Display Details"
+                Clicked="DisplayDetailsClicked"/>
+                
+            <Button
+                Text="Cancel"
+                Clicked="CancelClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MAUIProject1.ViewModels;assembly=MAUIProject1"
+             x:Class="MAUIProject1.Views.InstructorView"
+             Title="Instructor View"
+             NavigatedTo="ContentPage_NavigatedTo">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Enrollments"
+            Clicked="Toolbar_EnrollmentsClicked"
+        />
+        <ToolbarItem
+            Text="Courses"
+            Clicked="Toolbar_CoursesClicked"
+        />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0">
+
+            <VerticalStackLayout
+                Spacing="25"
+                Padding="30,0"
+                VerticalOptions="Center">
+                <Label 
+                    Text="Instructor View"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+            </VerticalStackLayout>
+            
+            <!--COURSES-->
+            <VerticalStackLayout IsVisible="{Binding IsCoursesVisible}"
+                Spacing="25"
+                Padding="30">
+                <Label
+                    Text="University Course List"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+                
+                <ListView
+                    ItemsSource="{Binding Courses}"
+                    SelectedItem="{Binding SelectedCourse, Mode=TwoWay}">
+                </ListView>
+                
+                <Button
+                    Text="Add Course"
+                    Clicked="AddCourseClick"/>
+                <Button
+                    Text="Edit Course"
+                    Clicked="EditCourseClick"/>
+                <Button
+                    Text="Remove Course"
+                    Clicked="RemoveCourseClick"
+                />
+                <Button
+                    Text="Cancel"
+                    Clicked="CancelClicked"
+                />
+            </VerticalStackLayout>
+                
+            <!--ENROLLMENTS-->
+            <VerticalStackLayout IsVisible="{Binding IsEnrollmentsVisible}"
+                Spacing="25"
+                Padding="30">
+                
+                <Label 
+                    Text="University Enrollment List"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                
+                <ListView
+                    ItemsSource="{Binding Students}"
+                    SelectedItem="{Binding SelectedPerson, Mode=TwoWay}">
+                </ListView>
+                
+                <Button 
+                    Text="Add Enrollment"
+                    Clicked="AddEnrollmentClick"
+                />
+                <Button
+                    Text="Edit Enrollment"
+                    Clicked="EditEnrollmentClick"
+                    />
+                <Button
+                    Text="Remove Enrollment"
+                    Clicked="RemoveEnrollmentClick"
+                    />
+                <Button
+                    Text="Cancel"
+                    Clicked="CancelClicked"
+                    />
+                
+            </VerticalStackLayout>
+        
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
